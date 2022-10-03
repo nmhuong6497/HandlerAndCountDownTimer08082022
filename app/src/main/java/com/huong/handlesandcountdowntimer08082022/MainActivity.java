@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onTick(long l) {
                             if (l >= 1000) {
-                                count = count == arrImages.length - 1 ? 0 : count;
+                                count = count == arrImages.length -1 ? 0 : count;
                                 imageView.setImageResource(arrImages[count++]);
                             }
                         }
@@ -60,7 +60,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Requirement: Nếu đang chạy thì dừng, không thì thông báo
-
-
+        btnPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isRunning) {
+                    isRunning = false;
+                    countDownTimer.cancel();
+                } else {
+                    Toast.makeText(MainActivity.this, "Banner đã dừng", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
